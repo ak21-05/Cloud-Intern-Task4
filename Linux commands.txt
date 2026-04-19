@@ -1,0 +1,21 @@
+# Update packages
+sudo apt update
+
+# Install Docker
+sudo apt install docker.io -y
+
+# Start Docker
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# Add user to docker group (avoid sudo)
+sudo usermod -aG docker ubuntu
+
+# Apply changes
+newgrp docker
+
+# Verify
+docker --version
+
+#Run Nginx Container
+docker run -d -p 80:80 --name mynginx nginx
